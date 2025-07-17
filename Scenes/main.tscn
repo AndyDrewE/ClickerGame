@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c07yk5eym6l5b"]
+[gd_scene load_steps=5 format=3 uid="uid://c07yk5eym6l5b"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_wupfd"]
 [ext_resource type="Script" path="res://Scripts/UIController.gd" id="2_8qfon"]
 [ext_resource type="Script" path="res://Scripts/ScoreManager.gd" id="2_qcn6g"]
+[ext_resource type="Script" path="res://Scripts/UpgradeController.gd" id="4_1y5n4"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wupfd")
@@ -54,9 +55,29 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
+[node name="AutoclickerBox" type="HBoxContainer" parent="UIController/UpgradePanel"]
+layout_mode = 2
+
+[node name="AutoclickerButton" type="Button" parent="UIController/UpgradePanel/AutoclickerBox"]
+layout_mode = 2
+text = "Autoclicker"
+
+[node name="NumClicker" type="Label" parent="UIController/UpgradePanel/AutoclickerBox"]
+layout_mode = 2
+text = "0"
+
+[node name="Cost" type="Label" parent="UIController/UpgradePanel/AutoclickerBox"]
+layout_mode = 2
+text = "10"
+
 [node name="ScoreManager" type="Node" parent="."]
 script = ExtResource("2_qcn6g")
 
-[node name="UpgradeManager" type="Node" parent="."]
+[node name="AutoClick_Timer" type="Timer" parent="ScoreManager"]
+autostart = true
+
+[node name="UpgradeController" type="Node" parent="."]
+script = ExtResource("4_1y5n4")
 
 [connection signal="pressed" from="UIController/Cookie" to="UIController" method="_on_Cookie_pressed"]
+[connection signal="timeout" from="ScoreManager/AutoClick_Timer" to="ScoreManager" method="_on_auto_click_timer_timeout"]
