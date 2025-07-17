@@ -80,4 +80,5 @@ autostart = true
 script = ExtResource("4_1y5n4")
 
 [connection signal="pressed" from="UIController/Cookie" to="UIController" method="_on_Cookie_pressed"]
+[connection signal="pressed" from="UIController/UpgradePanel/AutoclickerBox/AutoclickerButton" to="UIController" method="_on_autoclicker_button_pressed"]
 [connection signal="timeout" from="ScoreManager/AutoClick_Timer" to="ScoreManager" method="_on_auto_click_timer_timeout"]

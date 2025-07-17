@@ -1,7 +1,7 @@
 extends Node
 
 var gold := 0
-var num_autoclickers := 10
+var num_autoclickers := 0
 var click_value := 1
 
 signal gold_changed(new_gold)
