@@ -1,15 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://c07yk5eym6l5b"]
 
-[ext_resource type="Script" path="res://Scripts/ClickerControl.gd" id="1_oh282"]
+[ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_wupfd"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_wupfd")
 
 [node name="ClickerControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1150.0
 offset_bottom = 649.0
-script = ExtResource("1_oh282")
 
 [node name="GoldLabelBox" type="HBoxContainer" parent="ClickerControl"]
 layout_mode = 0
@@ -42,4 +42,13 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Click This"
 
-[connection signal="pressed" from="ClickerControl/Cookie" to="ClickerControl" method="_on_Cookie_pressed"]
+[node name="UpgradePanel" type="VBoxContainer" parent="ClickerControl"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[connection signal="pressed" from="ClickerControl/Cookie" to="." method="_on_Cookie_pressed"]
