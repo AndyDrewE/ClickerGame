@@ -15,6 +15,10 @@ func update_gold(amount := click_value):
 func add_autoclicker():
 	num_autoclickers += 1
 
+func strengthen_click():
+	click_value *= 2
+
+
 #Timer every second to update the autoclicker
 func _on_auto_click_timer_timeout():
 	update_gold((click_value * num_autoclickers))

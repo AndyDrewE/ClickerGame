@@ -70,6 +70,21 @@ text = "0"
 layout_mode = 2
 text = "10"
 
+[node name="StrengthenBox" type="HBoxContainer" parent="UIController/UpgradePanel"]
+layout_mode = 2
+
+[node name="StrengthenButton" type="Button" parent="UIController/UpgradePanel/StrengthenBox"]
+layout_mode = 2
+text = "Autoclicker"
+
+[node name="StrengthLevel" type="Label" parent="UIController/UpgradePanel/StrengthenBox"]
+layout_mode = 2
+text = "0"
+
+[node name="Cost" type="Label" parent="UIController/UpgradePanel/StrengthenBox"]
+layout_mode = 2
+text = "10"
+
 [node name="ScoreManager" type="Node" parent="."]
 script = ExtResource("2_qcn6g")
 
@@ -81,4 +96,5 @@ script = ExtResource("4_1y5n4")
 
 [connection signal="pressed" from="UIController/Cookie" to="UIController" method="_on_Cookie_pressed"]
 [connection signal="pressed" from="UIController/UpgradePanel/AutoclickerBox/AutoclickerButton" to="UIController" method="_on_autoclicker_button_pressed"]
+[connection signal="pressed" from="UIController/UpgradePanel/StrengthenBox/StrengthenButton" to="UIController" method="_on_strengthen_button_pressed"]
 [connection signal="timeout" from="ScoreManager/AutoClick_Timer" to="ScoreManager" method="_on_auto_click_timer_timeout"]
