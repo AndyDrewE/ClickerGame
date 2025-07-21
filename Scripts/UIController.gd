@@ -35,23 +35,27 @@ func update_strength_UI(level: int, new_cost: int):
 	
 
 func pause(paused : bool):
-	pause_menu.visible = paused
+	if paused:
+		##Turn off Autoclicker cause that's the only part of the game that goes automatically
+		score_manager.enable_autoclicker()
+	else:
+		##Turn on autoclicker
+		score_manager.disable_autoclicker()
+	
+	GameController.paused = !paused
+	pause_menu.visible = GameController.paused
 
 
 
 
 func _on_Cookie_pressed():
 	score_manager.update_gold()
-
-
-
 #There's probably a way to do this better
 func _on_autoclicker_button_pressed():
 	# Purchase auto clicker upgrade
 	upgrade_controller.purchase_upgrade("autoclicker")
 	#update autoclicker button UI
 	update_autoclicker_UI(upgrade_controller.upgrades["autoclicker"].level, upgrade_controller.upgrades["autoclicker"].cost)
-
 
 func _on_strengthen_button_pressed():
 	# Purchase strength upgrade
