@@ -1,13 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c07yk5eym6l5b"]
+[gd_scene load_steps=5 format=3 uid="uid://c07yk5eym6l5b"]
 
-[ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_wupfd"]
 [ext_resource type="Script" path="res://Scripts/UIController.gd" id="2_8qfon"]
 [ext_resource type="Script" path="res://Scripts/ScoreManager.gd" id="2_qcn6g"]
 [ext_resource type="Script" path="res://Scripts/UpgradeController.gd" id="4_1y5n4"]
 [ext_resource type="PackedScene" uid="uid://0qp5a17gnjkh" path="res://Scenes/pause_menu.tscn" id="5_qifyg"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_wupfd")
 
 [node name="UIController" type="Control" parent="."]
 layout_mode = 3

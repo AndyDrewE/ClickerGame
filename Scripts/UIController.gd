@@ -34,18 +34,13 @@ func update_strength_UI(level: int, new_cost: int):
 	strength_cost.text = "%d" % new_cost
 	
 
-func pause(paused : bool):
-	if paused:
-		##Turn off Autoclicker cause that's the only part of the game that goes automatically
-		score_manager.enable_autoclicker()
-	else:
-		##Turn on autoclicker
-		score_manager.disable_autoclicker()
-	
-	GameController.paused = !paused
+func toggle_pause():
+	GameController.paused = !GameController.paused
 	pause_menu.visible = GameController.paused
-
-
+	if GameController.paused:
+		score_manager.disable_autoclicker()
+	else:
+		score_manager.enable_autoclicker()
 
 
 func _on_Cookie_pressed():

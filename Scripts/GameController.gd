@@ -7,9 +7,9 @@ extends Node2D
 
 var paused = false
 
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		ui_controller.pause(paused)
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		ui_controller.toggle_pause()
 
 func _ready():
 	#Connect gold_changed signal to update_gold_display, that way everytime the gold is changed, the ui changes
