@@ -4,6 +4,8 @@ var gold := 0
 var num_autoclickers := 0
 var click_value := 1
 
+@onready var autoclick_timer = $AutoClick_Timer
+
 signal gold_changed(new_gold)
 
 
@@ -14,11 +16,18 @@ func update_gold(amount := click_value):
 	
 func add_autoclicker():
 	num_autoclickers += 1
+	autoclick_timer.wait_time = 1.0/num_autoclickers
 
 func strengthen_click():
 	click_value *= 2
 
+func enable_autoclicker():
+	autoclick_timer.start()
+
+func disable_autoclicker():
+	autoclick_timer.stop()
 
 #Timer every second to update the autoclicker
 func _on_auto_click_timer_timeout():
-	update_gold((click_value * num_autoclickers))
+	if num_autoclickers > 0:
+		update_gold(click_value)

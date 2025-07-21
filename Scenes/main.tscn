@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c07yk5eym6l5b"]
+[gd_scene load_steps=6 format=3 uid="uid://c07yk5eym6l5b"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_wupfd"]
 [ext_resource type="Script" path="res://Scripts/UIController.gd" id="2_8qfon"]
 [ext_resource type="Script" path="res://Scripts/ScoreManager.gd" id="2_qcn6g"]
 [ext_resource type="Script" path="res://Scripts/UpgradeController.gd" id="4_1y5n4"]
+[ext_resource type="PackedScene" uid="uid://0qp5a17gnjkh" path="res://Scenes/pause_menu.tscn" id="5_qifyg"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wupfd")
@@ -75,7 +76,7 @@ layout_mode = 2
 
 [node name="StrengthenButton" type="Button" parent="UIController/UpgradePanel/StrengthenBox"]
 layout_mode = 2
-text = "Autoclicker"
+text = "Strength"
 
 [node name="StrengthLevel" type="Label" parent="UIController/UpgradePanel/StrengthenBox"]
 layout_mode = 2
@@ -84,6 +85,9 @@ text = "0"
 [node name="Cost" type="Label" parent="UIController/UpgradePanel/StrengthenBox"]
 layout_mode = 2
 text = "10"
+
+[node name="Pause_Menu" parent="UIController" instance=ExtResource("5_qifyg")]
+visible = false
 
 [node name="ScoreManager" type="Node" parent="."]
 script = ExtResource("2_qcn6g")

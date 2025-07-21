@@ -3,6 +3,9 @@ extends Control
 @onready var score_manager = get_parent().get_node("ScoreManager")
 @onready var upgrade_controller = get_parent().get_node("UpgradeController")
 
+@onready var pause_menu = get_node("Pause_Menu")
+
+#Gold name and labels
 @onready var gold_name_label = $GoldLabelBox/GoldNameLabel
 @onready var gold_amount_label = $GoldLabelBox/GoldAmountLabel
 
@@ -29,19 +32,25 @@ func update_autoclicker_UI(num_clicker: int, new_cost: int):
 func update_strength_UI(level: int, new_cost: int):
 	strength_level.text = "%d" % level
 	strength_cost.text = "%d" % new_cost
+	
+
+func pause(paused : bool):
+	pause_menu.visible = paused
+
+
+
 
 func _on_Cookie_pressed():
 	score_manager.update_gold()
 
 
+
+#There's probably a way to do this better
 func _on_autoclicker_button_pressed():
 	# Purchase auto clicker upgrade
 	upgrade_controller.purchase_upgrade("autoclicker")
 	#update autoclicker button UI
 	update_autoclicker_UI(upgrade_controller.upgrades["autoclicker"].level, upgrade_controller.upgrades["autoclicker"].cost)
-	
-
-
 
 
 func _on_strengthen_button_pressed():
