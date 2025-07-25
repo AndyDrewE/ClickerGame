@@ -74,7 +74,7 @@ layout_mode = 2
 
 [node name="ClickValueButton" type="Button" parent="UIController/UpgradePanel/ClickValueBox"]
 layout_mode = 2
-text = "Strength"
+text = "Click Value"
 
 [node name="ClickValue" type="Label" parent="UIController/UpgradePanel/ClickValueBox"]
 layout_mode = 2
@@ -96,6 +96,7 @@ autostart = true
 [node name="UpgradeController" type="Node" parent="."]
 script = ExtResource("4_1y5n4")
 
+[connection signal="tree_entered" from="." to="ScoreManager" method="_on_main_tree_entered"]
 [connection signal="pressed" from="UIController/Cookie" to="UIController" method="_on_Cookie_pressed"]
 [connection signal="pressed" from="UIController/UpgradePanel/AutoclickerBox/AutoclickerButton" to="UIController" method="_on_autoclicker_button_pressed"]
 [connection signal="pressed" from="UIController/UpgradePanel/ClickValueBox/ClickValueButton" to="UIController" method="_on_strengthen_button_pressed"]

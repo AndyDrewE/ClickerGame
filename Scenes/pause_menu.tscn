@@ -32,24 +32,36 @@ theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 72
 text = "PAUSED"
+horizontal_alignment = 1
 
 [node name="ButtonHBox" type="HBoxContainer" parent="MenuContainer/PauseVBox"]
 layout_mode = 2
+alignment = 1
 
 [node name="Continue" type="Button" parent="MenuContainer/PauseVBox/ButtonHBox"]
 layout_mode = 2
 text = "Continue"
 
+[node name="Save Game" type="Button" parent="MenuContainer/PauseVBox/ButtonHBox"]
+layout_mode = 2
+text = "Save Game"
+
+[node name="Load Game" type="Button" parent="MenuContainer/PauseVBox/ButtonHBox"]
+layout_mode = 2
+text = "Load Game"
+
 [node name="Start" type="Button" parent="MenuContainer/PauseVBox/ButtonHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Start"
+text = "Quit To Menu"
 
 [node name="Exit" type="Button" parent="MenuContainer/PauseVBox/ButtonHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Exit"
+text = "Exit Game"
 
 [connection signal="pressed" from="MenuContainer/PauseVBox/ButtonHBox/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MenuContainer/PauseVBox/ButtonHBox/Save Game" to="." method="_on_save_game_pressed"]
+[connection signal="pressed" from="MenuContainer/PauseVBox/ButtonHBox/Load Game" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="MenuContainer/PauseVBox/ButtonHBox/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MenuContainer/PauseVBox/ButtonHBox/Exit" to="." method="_on_exit_pressed"]

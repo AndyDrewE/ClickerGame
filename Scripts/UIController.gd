@@ -1,7 +1,7 @@
 extends Control
 
-@onready var score_manager = get_parent().get_node("ScoreManager")
-@onready var upgrade_controller = get_parent().get_node("UpgradeController")
+var score_manager
+var upgrade_controller
 
 @onready var pause_menu = get_node("Pause_Menu")
 
@@ -17,6 +17,12 @@ extends Control
 @onready var click_value_cost = $UpgradePanel/ClickValueBox/Cost
 
 func _ready():
+	score_manager = GameController.get_score_manager()
+	upgrade_controller = GameController.get_upgrade_controller()
+	refresh_UI()
+
+func refresh_UI():
+	update_gold_display(score_manager.gold)
 	update_autoclicker_UI(upgrade_controller.upgrades["autoclicker"].level, upgrade_controller.upgrades["autoclicker"].cost)
 	update_click_value_UI(upgrade_controller.upgrades["click_value"].level, upgrade_controller.upgrades["click_value"].cost)
 
@@ -37,7 +43,6 @@ func update_autoclicker_UI(num_clicker: int, new_cost: int):
 func update_click_value_UI(level: int, new_cost: int):
 	click_value_level.text = "%d" % level
 	click_value_cost.text = "%d" % new_cost
-	
 
 func toggle_pause():
 	GameController.paused = !GameController.paused

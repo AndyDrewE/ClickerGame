@@ -2,10 +2,14 @@ extends Node
 
 var gold := 0
 
-@onready var autoclick_timer = $AutoClick_Timer
-@onready var ui_controller = get_parent().get_node("UIController")
-@onready var upgrade_controller = get_parent().get_node("UpgradeController")
+var autoclick_timer
+var ui_controller
+var upgrade_controller
 
+func _ready():
+	autoclick_timer = $AutoClick_Timer
+	ui_controller = GameController.get_UI_controller()
+	upgrade_controller = GameController.get_upgrade_controller()
 
 #Update gold function, optional argument, default value is click_value
 func update_gold(amount = upgrade_controller.upgrades["click_value"].level):
@@ -25,3 +29,8 @@ func disable_autoclicker():
 func _on_auto_click_timer_timeout():
 	if upgrade_controller.upgrades["autoclicker"].level > 0:
 		update_gold(upgrade_controller.upgrades["click_value"].level)
+
+
+func _on_main_tree_entered():
+	if GameController.pending_load:
+		GameController.load_game()
