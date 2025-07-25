@@ -7,7 +7,7 @@ func _on_continue_pressed():
 
 
 func _on_start_pressed():
-	print("Go to Start Menu")
+	ui_controller.go_to_start()
 
 
 func _on_exit_pressed():

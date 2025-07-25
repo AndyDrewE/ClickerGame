@@ -5,14 +5,14 @@ var num_autoclickers := 0
 var click_value := 1
 
 @onready var autoclick_timer = $AutoClick_Timer
+@onready var ui_controller = get_parent().get_node("UIController")
 
-signal gold_changed(new_gold)
 
 
 #Update gold function, optional argument, default value is click_value
 func update_gold(amount := click_value):
 	gold += amount
-	emit_signal("gold_changed", gold)
+	ui_controller.update_gold_display(gold)
 	
 func add_autoclicker():
 	num_autoclickers += 1

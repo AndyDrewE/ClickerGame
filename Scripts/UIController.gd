@@ -19,7 +19,12 @@ extends Control
 func _ready():
 	update_autoclicker_UI(upgrade_controller.upgrades["autoclicker"].level, upgrade_controller.upgrades["autoclicker"].cost)
 	update_strength_UI(upgrade_controller.upgrades["strength"].level, upgrade_controller.upgrades["strength"].cost)
-	
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		if get_tree().current_scene.name == "Main":
+			toggle_pause()
+
 #update gold UI
 func update_gold_display(new_gold : int):
 	gold_amount_label.text = "%d" % new_gold
@@ -42,9 +47,15 @@ func toggle_pause():
 	else:
 		score_manager.enable_autoclicker()
 
+func go_to_start():
+	GameController.paused = false
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
 
 func _on_Cookie_pressed():
 	score_manager.update_gold()
+	
+
 #There's probably a way to do this better
 func _on_autoclicker_button_pressed():
 	# Purchase auto clicker upgrade
