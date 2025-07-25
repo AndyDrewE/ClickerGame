@@ -8,12 +8,12 @@ var upgrades = {
 		"cost_scaling": 1.25,
 		"effect": "add_autoclicker"
 	},
-	"strength": {
-		"name": "Strength",
-		"cost": 100,
-		"level": 0,
-		"cost_scaling": 2,
-		"effect": "strengthen_click"
+	"click_value": {
+		"name": "Click Value",
+		"cost": 25,
+		"level": 1,
+		"cost_scaling": 1.1,
+		"effect": "add_click_value"
 	}
 }
 
@@ -32,6 +32,4 @@ func purchase_upgrade(upgrade_id: String):
 		
 func apply_upgrade_effect(effect):
 	if effect == "add_autoclicker":
-		score_manager.add_autoclicker()
-	if effect == "strengthen_click":
-		score_manager.strengthen_click()
+		score_manager.update_autoclick_wait_time()

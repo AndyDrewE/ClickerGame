@@ -13,12 +13,12 @@ extends Control
 @onready var num_clicker_label = $UpgradePanel/AutoclickerBox/NumClicker
 @onready var clicker_cost = $UpgradePanel/AutoclickerBox/Cost
 #strength upgrade labels
-@onready var strength_level = $UpgradePanel/StrengthenBox/StrengthLevel
-@onready var strength_cost = $UpgradePanel/StrengthenBox/Cost
+@onready var click_value_level = $UpgradePanel/ClickValueBox/ClickValue
+@onready var click_value_cost = $UpgradePanel/ClickValueBox/Cost
 
 func _ready():
 	update_autoclicker_UI(upgrade_controller.upgrades["autoclicker"].level, upgrade_controller.upgrades["autoclicker"].cost)
-	update_strength_UI(upgrade_controller.upgrades["strength"].level, upgrade_controller.upgrades["strength"].cost)
+	update_click_value_UI(upgrade_controller.upgrades["click_value"].level, upgrade_controller.upgrades["click_value"].cost)
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -34,9 +34,9 @@ func update_autoclicker_UI(num_clicker: int, new_cost: int):
 	num_clicker_label.text = "%d" % num_clicker
 	clicker_cost.text = "%d" % new_cost
 
-func update_strength_UI(level: int, new_cost: int):
-	strength_level.text = "%d" % level
-	strength_cost.text = "%d" % new_cost
+func update_click_value_UI(level: int, new_cost: int):
+	click_value_level.text = "%d" % level
+	click_value_cost.text = "%d" % new_cost
 	
 
 func toggle_pause():
@@ -64,8 +64,8 @@ func _on_autoclicker_button_pressed():
 	update_autoclicker_UI(upgrade_controller.upgrades["autoclicker"].level, upgrade_controller.upgrades["autoclicker"].cost)
 
 func _on_strengthen_button_pressed():
-	# Purchase strength upgrade
-	upgrade_controller.purchase_upgrade("strength")
-	#update strength button UI
-	update_strength_UI(upgrade_controller.upgrades["strength"].level, upgrade_controller.upgrades["strength"].cost)
+	# Purchase click_value upgrade
+	upgrade_controller.purchase_upgrade("click_value")
+	#update click_value button UI
+	update_click_value_UI(upgrade_controller.upgrades["click_value"].level, upgrade_controller.upgrades["click_value"].cost)
 	
