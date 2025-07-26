@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8c1r3p3l1ru5"]
+[gd_scene load_steps=3 format=3 uid="uid://c8c1r3p3l1ru5"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_oguym"]
+[ext_resource type="PackedScene" uid="uid://e685tosb0h54" path="res://Scenes/sound_manager.tscn" id="2_316ui"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -53,18 +54,20 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 alignment = 1
 
-[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" groups=["Button"]]
 layout_mode = 2
 text = "Start New"
 
-[node name="LoadGame" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="LoadGame" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" groups=["Button"]]
 layout_mode = 2
 text = "Load Game
 "
 
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" groups=["Button"]]
 layout_mode = 2
 text = "Exit"
+
+[node name="SoundManager" parent="." instance=ExtResource("2_316ui")]
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]

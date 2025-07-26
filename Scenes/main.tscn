@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c07yk5eym6l5b"]
+[gd_scene load_steps=6 format=3 uid="uid://c07yk5eym6l5b"]
 
 [ext_resource type="Script" path="res://Scripts/UIController.gd" id="2_8qfon"]
 [ext_resource type="Script" path="res://Scripts/ScoreManager.gd" id="2_qcn6g"]
 [ext_resource type="Script" path="res://Scripts/UpgradeController.gd" id="4_1y5n4"]
+[ext_resource type="PackedScene" uid="uid://e685tosb0h54" path="res://Scenes/sound_manager.tscn" id="5_mbccx"]
 [ext_resource type="PackedScene" uid="uid://0qp5a17gnjkh" path="res://Scenes/pause_menu.tscn" id="5_qifyg"]
 
 [node name="Main" type="Node2D"]
@@ -30,7 +31,7 @@ layout_mode = 2
 text = "0
 "
 
-[node name="Cookie" type="Button" parent="UIController"]
+[node name="Cookie" type="Button" parent="UIController" groups=["Button"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,7 +58,7 @@ grow_horizontal = 0
 [node name="AutoclickerBox" type="HBoxContainer" parent="UIController/UpgradePanel"]
 layout_mode = 2
 
-[node name="AutoclickerButton" type="Button" parent="UIController/UpgradePanel/AutoclickerBox"]
+[node name="AutoclickerButton" type="Button" parent="UIController/UpgradePanel/AutoclickerBox" groups=["Button"]]
 layout_mode = 2
 text = "Autoclicker"
 
@@ -72,7 +73,7 @@ text = "10"
 [node name="ClickValueBox" type="HBoxContainer" parent="UIController/UpgradePanel"]
 layout_mode = 2
 
-[node name="ClickValueButton" type="Button" parent="UIController/UpgradePanel/ClickValueBox"]
+[node name="ClickValueButton" type="Button" parent="UIController/UpgradePanel/ClickValueBox" groups=["Button"]]
 layout_mode = 2
 text = "Click Value"
 
@@ -95,6 +96,8 @@ autostart = true
 
 [node name="UpgradeController" type="Node" parent="."]
 script = ExtResource("4_1y5n4")
+
+[node name="SoundManager" parent="." instance=ExtResource("5_mbccx")]
 
 [connection signal="tree_entered" from="." to="ScoreManager" method="_on_main_tree_entered"]
 [connection signal="pressed" from="UIController/Cookie" to="UIController" method="_on_Cookie_pressed"]

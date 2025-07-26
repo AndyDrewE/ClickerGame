@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://e685tosb0h54"]
+
+[ext_resource type="Script" path="res://Scripts/sound_manager.gd" id="1_tdcos"]
+[ext_resource type="AudioStream" uid="uid://d37u7p2iprljp" path="res://Audio/shutter-click.wav" id="2_xqbpk"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_tdcos")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_xqbpk")
