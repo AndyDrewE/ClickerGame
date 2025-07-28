@@ -6,5 +6,6 @@
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_tdcos")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="click_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_xqbpk")
+volume_db = 5.0

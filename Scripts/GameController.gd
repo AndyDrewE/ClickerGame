@@ -18,6 +18,9 @@ func get_upgrade_controller() -> Node:
 func get_UI_controller() -> Node:
 	return get_tree().current_scene.get_node("UIController")
 
+func get_sound_manager() -> Node:
+	return get_tree().current_scene.get_node("SoundManager")
+
 func save_game():
 	var score_manager = get_score_manager()
 	var upgrades = get_upgrade_controller().upgrades
