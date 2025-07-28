@@ -57,3 +57,7 @@ func load_game():
 			_:
 				if upgrades.has(key):
 					upgrades[key].level = data[key]
+
+#helper function cause godot doesn't have a round function for some reason
+func round_to_dec(num, digit):
+	return round(num * pow(10.0, digit)) / pow(10.0, digit)

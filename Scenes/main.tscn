@@ -85,6 +85,21 @@ text = "0"
 layout_mode = 2
 text = "10"
 
+[node name="MultiplierBox" type="HBoxContainer" parent="UIController/UpgradePanel"]
+layout_mode = 2
+
+[node name="MultiplierButton" type="Button" parent="UIController/UpgradePanel/MultiplierBox" groups=["Button"]]
+layout_mode = 2
+text = "Multiplier"
+
+[node name="Multiplier" type="Label" parent="UIController/UpgradePanel/MultiplierBox"]
+layout_mode = 2
+text = "0"
+
+[node name="Cost" type="Label" parent="UIController/UpgradePanel/MultiplierBox"]
+layout_mode = 2
+text = "10"
+
 [node name="Pause_Menu" parent="UIController" instance=ExtResource("5_qifyg")]
 visible = false
 
@@ -103,4 +118,5 @@ script = ExtResource("4_1y5n4")
 [connection signal="pressed" from="UIController/Cookie" to="UIController" method="_on_Cookie_pressed"]
 [connection signal="pressed" from="UIController/UpgradePanel/AutoclickerBox/AutoclickerButton" to="UIController" method="_on_autoclicker_button_pressed"]
 [connection signal="pressed" from="UIController/UpgradePanel/ClickValueBox/ClickValueButton" to="UIController" method="_on_strengthen_button_pressed"]
+[connection signal="pressed" from="UIController/UpgradePanel/MultiplierBox/MultiplierButton" to="UIController" method="_on_multiplier_button_pressed"]
 [connection signal="timeout" from="ScoreManager/AutoClick_Timer" to="ScoreManager" method="_on_auto_click_timer_timeout"]

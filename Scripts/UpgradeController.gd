@@ -43,3 +43,5 @@ func purchase_upgrade(upgrade_id: String):
 func apply_upgrade_effect(effect):
 	if effect == "add_autoclicker":
 		score_manager.update_autoclick_wait_time()
+	elif effect == "add_multiplier":
+		score_manager.update_multiplier_factor()

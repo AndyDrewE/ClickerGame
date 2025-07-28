@@ -15,6 +15,9 @@ var upgrade_controller
 #strength upgrade labels
 @onready var click_value_level = $UpgradePanel/ClickValueBox/ClickValue
 @onready var click_value_cost = $UpgradePanel/ClickValueBox/Cost
+#multiplier upgrade labels
+@onready var multiplier_level = $UpgradePanel/MultiplierBox/Multiplier
+@onready var multiplier_cost = $UpgradePanel/MultiplierBox/Cost
 
 func _ready():
 	score_manager = GameController.get_score_manager()
@@ -25,6 +28,7 @@ func refresh_UI():
 	update_gold_display(score_manager.gold)
 	update_autoclicker_UI(upgrade_controller.upgrades["autoclicker"].level, upgrade_controller.upgrades["autoclicker"].cost)
 	update_click_value_UI(upgrade_controller.upgrades["click_value"].level, upgrade_controller.upgrades["click_value"].cost)
+	update_multiplier_UI(score_manager.multiplier_factor, upgrade_controller.upgrades["multiplier"].cost)
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -40,9 +44,13 @@ func update_autoclicker_UI(num_clicker: int, new_cost: int):
 	num_clicker_label.text = "%d" % num_clicker
 	clicker_cost.text = "%d" % new_cost
 
-func update_click_value_UI(level: int, new_cost: int):
+func update_click_value_UI(level, new_cost: int):
 	click_value_level.text = "%d" % level
 	click_value_cost.text = "%d" % new_cost
+	
+func update_multiplier_UI(level, new_cost: int):
+	multiplier_level.text = "%s" % str(GameController.round_to_dec(level, 2))
+	multiplier_cost.text = "%d" % new_cost
 
 func toggle_pause():
 	GameController.paused = !GameController.paused
@@ -73,4 +81,9 @@ func _on_strengthen_button_pressed():
 	upgrade_controller.purchase_upgrade("click_value")
 	#update click_value button UI
 	update_click_value_UI(upgrade_controller.upgrades["click_value"].level, upgrade_controller.upgrades["click_value"].cost)
-	
+
+func _on_multiplier_button_pressed():
+	# Purchase multiplier upgrade
+	upgrade_controller.purchase_upgrade("multiplier")
+	#update multiplier button UI
+	update_multiplier_UI(score_manager.multiplier_factor, upgrade_controller.upgrades["multiplier"].cost)
